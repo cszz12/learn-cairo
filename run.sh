@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FILE="puzzle1"
+FILE="ex/ex1"
 
 echo src/$FILE.cairo
 
