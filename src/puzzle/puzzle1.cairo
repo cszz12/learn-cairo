@@ -1,3 +1,5 @@
+# https://www.cairo-lang.org/docs/hello_cairo/puzzle.html
+
 struct Location:
     member row : felt
     member col : felt
