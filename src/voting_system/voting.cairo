@@ -131,6 +131,8 @@ func process_vote{
 
     # Generate the new state.
     local new_state : VotingState
+
+    # this is weird, should it be state.public_key_tree_end? so that the prev state cm is last updated state, otherwise state.public_key_tree_start never change
     assert new_state.public_key_tree_start = (
         state.public_key_tree_start)
     assert new_state.public_key_tree_end = (
