@@ -1,0 +1,50 @@
+resources:
+playground  https://starknet.io/playground/
+explorer    https://goerli.voyager.online/
+awesome     https://github.com/gakonst/awesome-starknet
+
+
+export STARKNET_NETWORK=alpha-goerli
+export STARKNET_WALLET=starkware.starknet.wallets.open_zeppelin.OpenZeppelinAccount
+
+$ starknet deploy_account
+
+default account dir: less ~/.starknet_accounts/starknet_open_zeppelin_accounts.json
+get eth : https://faucet.goerli.starknet.io/
+
+// Sent deploy account contract transaction.
+➜  script git:(main) ✗ starknet deploy --contract contract_compiled.json
+Deploy transaction was sent.
+Contract address: 0x0200392f7946fa9e85d06052082ba7484390210ab7fe0bc970e3f3ab3b588057
+Transaction hash: 0x3c4fb36ee92bcad5a658a922ef44dede1133824c8108e4dca327a52451752dd
+
+export CONTRACT_ADDRESS=0x0200392f7946fa9e85d06052082ba7484390210ab7fe0bc970e3f3ab3b588057
+
+starknet invoke \
+    --address ${CONTRACT_ADDRESS} \
+    --abi contract_abi.json \
+    --function increase_balance \
+    --inputs 1234
+
+
+starknet tx_status --hash 0x3c4fb36ee92bcad5a658a922ef44dede1133824c8108e4dca327a52451752dd
+
+
+➜  script git:(main) ✗ starknet invoke \
+    --address ${CONTRACT_ADDRESS} \
+    --abi contract_abi.json \
+    --function increase_balance \
+    --inputs 1234
+Sending the transaction with max_fee: 0.000003 ETH.
+Invoke transaction was sent.
+Contract address: 0x0200392f7946fa9e85d06052082ba7484390210ab7fe0bc970e3f3ab3b588057
+Transaction hash: 0x276931faa59430423d3ead428b414888dea383243778716dff856179ea9c9b5
+
+starknet tx_status --hash 0x276931faa59430423d3ead428b414888dea383243778716dff856179ea9c9b5
+
+starknet call \
+    --address ${CONTRACT_ADDRESS} \
+    --abi contract_abi.json \
+    --function get_balance
+
+starknet get_transaction --hash 0x3c4fb36ee92bcad5a658a922ef44dede1133824c8108e4dca327a52451752dd
