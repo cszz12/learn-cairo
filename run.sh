@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FILE="ex/ex2"
+FILE="ex/ex2-2"
 
 echo src/$FILE.cairo
 
